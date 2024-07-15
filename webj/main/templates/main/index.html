@@ -4,6 +4,16 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page content.</p>
+{% load static %}
+<img src="{% static 'images/background.png' %}" alt="Background Image" class="background-image">
+<a href="{% url 'new' %}" class="centered-text">СТЕНА!</a>
+<p class="description">Оставь надпись</p>
+
+<div>
+    {% for message in messages %}
+        <p class="desc" style="position: absolute; top: {{ message.y_position }}px; left: {{ message.x_position }}px; color: black; font-size: 20px;">
+            {{ message.text }}
+        </p>
+    {% endfor %}
+</div>
 {% endblock %}

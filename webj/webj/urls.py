@@ -1,8 +1,11 @@
+# project_root/urls.py
 from django.contrib import admin
 from django.urls import path, include
+from main_1 import views as main_1_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),      # Корневой маршрут для приложения main
-    path('main_1/', include('main_1.urls'))  # Используем 'main_1/' чтобы избежать конфликтов
+    path('main/', include('main.urls')),
+    path('main_1/', include('main_1.urls')),
+    path('', main_1_views.index, name='index'),
 ]
